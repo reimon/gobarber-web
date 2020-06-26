@@ -15,7 +15,7 @@ const SignIn: React.FC = () => (
       <form>
         <h1>Faça seu logon</h1>
 
-        <Input name="E-mail" icon={FiMail} placeholder="E-mail" />
+        <Input name="email" icon={FiMail} placeholder="E-mail" />
 
         <Input
           name="Password"
