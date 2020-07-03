@@ -30,12 +30,15 @@ const SignIn: React.FC = () => {
     async (data: SignInFormData) => {
       try {
         formRef.current?.setErrors({});
+
         const schema = Yup.object().shape({
           email: Yup.string().required('E-mail obrigatório').email(),
           password: Yup.string().required('Senha obrigatória'),
         });
 
-        await schema.validate(data, { abortEarly: false });
+        await schema.validate(data, {
+          abortEarly: false,
+        });
         await signIn({
           email: data.email,
           password: data.password,
@@ -45,8 +48,14 @@ const SignIn: React.FC = () => {
           const errors = getValidationErrors(err);
 
           formRef.current?.setErrors(errors);
+          return;
         }
-        addToast();
+
+        addToast({
+          type: 'error',
+          title: 'Erro na autenticação',
+          description: 'Ocorreu um erro ao fazer login, cheque as credenciais.',
+        });
       }
     },
     [signIn, addToast],
@@ -72,12 +81,14 @@ const SignIn: React.FC = () => {
 
           <a href="forgot">Esqueci minha senha</a>
         </Form>
+
         <a href="">
           <FiLogIn />
           Criar conta
         </a>
       </Content>
-      <Background> </Background>
+
+      <Background />
     </Container>
   );
 };
