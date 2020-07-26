@@ -198,8 +198,28 @@ export const Calendar = styled.aside`
   }
   .DayPicker,
   .DayPicker-Month {
+    margin: 0 !important;
     width: 100%;
+    border-radius: 10px 10px 0px 0px;
   }
+
+  .DayPicker-Caption {
+    background: #3e3b47;
+    border-radius: 10px 10px 0px 0px;
+    div {
+      text-align: center;
+      margin: 8px;
+    }
+  }
+  .DayPicker-NavButton--prev {
+    margin-right: 19.5em !important;
+    margin: -5px;
+  }
+
+  .DayPicker-NavButton--next {
+    margin: -5px;
+  }
+
   .DayPicker-Month {
     border-collapse: separate;
     border-spacing: 8px;
