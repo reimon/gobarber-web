@@ -24,6 +24,7 @@ import logoImg from '../../assets/logo.svg';
 import { useAuth } from '../../hooks/auth';
 import api from '../../services/api';
 import { parseISO } from 'date-fns/esm';
+import { Link } from 'react-router-dom';
 
 interface MonthAvailabilityItem {
   day: number;
@@ -143,7 +144,9 @@ const Dashboard: React.FC = () => {
             <img src={user.avatar_url} alt={user.name} />
             <div>
               <span>Bem-Vindo</span>
-              <a>{user.name}</a>
+              <Link to="/profile">
+                <a>{user.name}</a>
+              </Link>
             </div>
           </Profile>
           <button type="button" onClick={signOut}>
